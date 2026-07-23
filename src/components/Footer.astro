@@ -10,22 +10,22 @@ const emoji = emojis[Math.floor(Math.random() * emojis.length)];
 	<p>Images courtesy of <a href="https://www.pexels.com/photo/light-city-road-traffic-8921657/" target="_blank" rel="noopener,noreferrer">Pexels</a></p>
 	<ul class="social">
 		<li>
-			<a href="https://github.com/dmschulman" title="David M. Schulman on Github" target="_blank" rel="noopener,noreferrer">
+			<a class="github" href="https://github.com/dmschulman" title="David M. Schulman on Github" target="_blank" rel="noopener,noreferrer">
 				<Icon name="fa-github" />
 			</a>
 		</li>
 		<li>
-			<a href="https://www.linkedin.com/in/dmschulman/" title="David M. Schulman on LinkedIn" target="_blank" rel="noopener,noreferrer">
+			<a class="linkedin" href="https://www.linkedin.com/in/dmschulman/" title="David M. Schulman on LinkedIn" target="_blank" rel="noopener,noreferrer">
 				<Icon name="fa-linkedin" />
 			</a>
 		</li>
 		<li>
-			<a href="https://bsky.app/profile/schul.dev" title="David M. Schulman on Bluesky" target="_blank" rel="noopener,noreferrer">
+			<a class="bluesky" href="https://bsky.app/profile/schul.dev" title="David M. Schulman on Bluesky" target="_blank" rel="noopener,noreferrer">
 				<Icon name="fa-bluesky" />
 			</a>
 		</li>
 		<li>
-			<a href="https://www.instagram.com/dmschulman/" title="David M. Schulman on Instagram" target="_blank" rel="noopener,noreferrer">
+			<a class="instagram" href="https://www.instagram.com/dmschulman/" title="David M. Schulman on Instagram" target="_blank" rel="noopener,noreferrer">
 				<Icon name="fa-instagram" />
 			</a>
 		</li>
@@ -49,20 +49,59 @@ const emoji = emojis[Math.floor(Math.random() * emojis.length)];
 		}
 		
 		ul {
-			padding: 0;
-			margin: 0;
-			list-style: none;
-			display: flex;
-			flex-direction: row;
-			gap: 1.5rem;
+			&.social {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+				display: flex;
+				flex-direction: row;
+				gap: 1.5rem;
 
-			li {
-				a {
-					color: #ffffff;
+				li {
+					a {
+						color: #ffffff;
+						transition: all 250ms ease;
 
-					svg {
-						width: 32px;
-						height: 32px;
+						&.github {
+							&:hover,
+							&:focus {
+								svg {
+									filter: brightness(0) saturate(100%) invert(63%) sepia(3%) saturate(382%) hue-rotate(87deg) brightness(93%) contrast(87%);
+								}
+							}
+						}
+
+						&.linkedin {
+							&:hover,
+							&:focus {
+								svg {
+									filter: brightness(0) saturate(100%) invert(26%) sepia(62%) saturate(6265%) hue-rotate(186deg) brightness(96%) contrast(101%);
+								}
+							}
+						}
+
+						&.bluesky {
+							&:hover,
+							&:focus {
+								svg {
+									filter: brightness(0) saturate(100%) invert(58%) sepia(58%) saturate(5815%) hue-rotate(176deg) brightness(103%) contrast(112%);
+								}
+							}
+						}
+
+						&.instagram {
+							&:hover,
+							&:focus {
+								svg {
+									filter: brightness(0) saturate(100%) invert(47%) sepia(13%) saturate(2796%) hue-rotate(278deg) brightness(88%) contrast(75%);
+								}
+							}
+						}
+
+						svg {
+							width: 32px;
+							height: 32px;
+						}
 					}
 				}
 			}

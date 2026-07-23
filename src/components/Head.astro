@@ -1,0 +1,82 @@
+---
+import { SEO } from "astro-seo";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+	title = 'Philly Ipsum Text Jawnerator',
+	description = 'A generator that stitches together Philly slang, personalities, food, and phrases into random paragraphs. Free, fast, and full of jawns.',
+  image = '/og-image.png',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+const socialImage = new URL(image, Astro.site).toString();
+---
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="generator" content={Astro.generator} />
+
+	<SEO
+		title={title}
+		description={description}
+		canonical={canonicalURL}
+		openGraph={{
+			basic: {
+				title,
+				type: 'website',
+				image: socialImage,
+				url: canonicalURL,
+			},
+			optional: {
+				siteName: 'Philly Ipsum',
+				description,
+				locale: 'en_US',
+			},
+			image: {
+				width: 1200,
+				height: 630,
+				alt: 'Philly Ipsum — a randomly generated Philadelphia nonsense paragraph',
+			},
+		}}
+		twitter={{
+			card: 'summary_large_image',
+			title,
+			description,
+			image: socialImage,
+			imageAlt: 'Philly Ipsum — a randomly generated Philadelphia nonsense paragraph',
+		}}
+		extend={{
+			link: [
+				{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+				{ rel: 'sitemap', type: 'application/xml', href: '/sitemap-index.xml' },
+			],
+			meta: [
+				{ name: 'theme-color', content: '#004c54' },
+				{ name: 'generator', content: Astro.generator },
+			],
+		}}
+	/>
+
+	{
+		import.meta.env.PROD && (
+			<>
+				<script is:inline src="https://www.googletagmanager.com/gtag/js?id=G-P5XJHHJXFG"></script>
+				<script is:inline>
+					window.dataLayer = window.dataLayer || [];
+					function gtag() {
+						dataLayer.push(arguments);
+					}
+					gtag('js', new Date());
+
+					gtag('config', 'G-P5XJHHJXFG');
+				</script>
+			</>
+		)
+	}
+</head>

@@ -22,21 +22,29 @@ const initial = output(paragraphs, sentences);
   </script>
 </Layout>
 
-<style lang="scss">
+<style lang="scss" is:global>
+  @use '../styles/breakpoints.scss' as *;
 
   textarea {
-    resize: vertical;
-    display: inline-block;
+    resize: none;
+    display: block;
     min-height: 360px;
-    min-width: 300px;
-    width: 800px;
+    min-width: calc(320px - 2rem);
+    width: 90vw;
     border: 1px dashed #010101;
     padding: 1rem;
     text-align: left;
     background: #ffffff;
     color: #010101;
-    margin: 0;
+    margin: 0 auto;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
+
+    @include bp(tablet) {
+      width: calc(70vw - 10%);
+      min-width: 700px;
+      min-height: 500px;
+      resize: vertical;
+    }
   }
 </style>

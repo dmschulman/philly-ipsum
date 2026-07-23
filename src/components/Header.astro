@@ -13,6 +13,8 @@ const { defaultParagraphs = 3, defaultSentences = 4 } = Astro.props;
 </header>
 
 <style lang="scss">
+	@use '../styles/breakpoints.scss' as *;
+
 	header {
 		display: flex;
 		flex-direction: column;
@@ -20,6 +22,7 @@ const { defaultParagraphs = 3, defaultSentences = 4 } = Astro.props;
 
 		h1 {
 			margin: 0 auto 1rem;
+			text-align: center;
 		}
 	}
 </style>

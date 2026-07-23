@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 import icon from 'astro-icon';
 
@@ -23,6 +24,7 @@ export default defineConfig({
     }
   },
   integrations: [
+    sitemap(),
     icon({
       iconDir: "src/assets/icons",
       svgoOptions: {

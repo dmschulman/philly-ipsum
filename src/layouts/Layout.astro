@@ -1,22 +1,20 @@
 ---
+import Head from '../components/Head.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 interface Props {
   title?: string;
+  description?: string;
+  image?: string;
 }
 
-const { title = 'Philly Ipsum Text Jawnerator' } = Astro.props;
+const { title, description, image } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
+  <Head title={title} description={description} image={image} />
   <body>
     <Header />
     <main>
@@ -26,26 +24,65 @@ const { title = 'Philly Ipsum Text Jawnerator' } = Astro.props;
   </body>
 </html>
 
-<style lang="scss">
+<style lang="scss" is:global>
+  @use '../styles/breakpoints.scss' as *;
+
   html {
-    font-size: 18px;
-  
-    body {
+    font-size: 16px;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url(../assets/images/philadelphia-city-hall-sm.jpg);
+    background-color: #666666;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    
+
+    @include bp(tablet) {
+      font-size: 18px;
       background-image: url(../assets/images/philadelphia-city-hall.jpg);
-      background-color: #666666;
-      background-repeat: no-repeat;
-      background-position: center 33%;
-      background-size: cover;
+    }
+      
+    body {
       position: relative;
       padding: 0;
-      margin: 1rem 5%;
-      height: calc(100vh - 2rem);
-      font-family: Arial, Helvetica, sans-serif;
-      color: #ffffff;
+      margin: 0;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: nowrap;
+      min-height: 100vh;
+
+      header {
+        margin: 2rem 2% 3rem;
+
+        @include bp(tablet) {
+          margin: 2rem 5% 3rem;
+        }
+
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 2rem 2%;
+
+        @include bp(tablet) {
+          margin: 2rem 5%;
+        }
+      }
+
+      footer {
+        margin: 2rem 2% 1rem;
+
+        @include bp(tablet) {
+          margin: 2rem 5% 1rem;
+        }
+      }
     }
   }
 </style>
