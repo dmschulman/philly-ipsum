@@ -1,0 +1,71 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const emojis = ['🔔', '🥨', '🦅', '🎆', '🥊', '📜'];
+const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+---
+
+<footer>
+	<p>Coded in Philadelphia <span class="emoji" aria-hidden="true">{emoji}</span> by <a href="https://dmschulman.com" target="_blank" rel="noopener,noreferrer">David M. Schulman</a></p>
+	<p>Images courtesy of <a href="https://www.pexels.com/photo/light-city-road-traffic-8921657/" target="_blank" rel="noopener,noreferrer">Pexels</a></p>
+	<ul class="social">
+		<li>
+			<a href="https://github.com/dmschulman" title="David M. Schulman on Github" target="_blank" rel="noopener,noreferrer">
+				<Icon name="fa-github" />
+			</a>
+		</li>
+		<li>
+			<a href="https://www.linkedin.com/in/dmschulman/" title="David M. Schulman on LinkedIn" target="_blank" rel="noopener,noreferrer">
+				<Icon name="fa-linkedin" />
+			</a>
+		</li>
+		<li>
+			<a href="https://bsky.app/profile/schul.dev" title="David M. Schulman on Bluesky" target="_blank" rel="noopener,noreferrer">
+				<Icon name="fa-bluesky" />
+			</a>
+		</li>
+		<li>
+			<a href="https://www.instagram.com/dmschulman/" title="David M. Schulman on Instagram" target="_blank" rel="noopener,noreferrer">
+				<Icon name="fa-instagram" />
+			</a>
+		</li>
+	</ul>
+</footer>
+
+<style lang="scss">
+	footer {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		font-weight: bold;
+
+		p {
+			margin: 0 auto 0.5rem;
+
+			a {
+				color: #ffffff;
+			}
+		}
+		
+		ul {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+			display: flex;
+			flex-direction: row;
+			gap: 1.5rem;
+
+			li {
+				a {
+					color: #ffffff;
+
+					svg {
+						width: 32px;
+						height: 32px;
+					}
+				}
+			}
+		}
+	}
+</style>

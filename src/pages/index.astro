@@ -1,0 +1,42 @@
+---
+import { words } from '../lib/words.js';
+import { buildGenerator } from '../lib/generator.js';
+
+import Layout from '../layouts/Layout.astro';
+
+const paragraphs = 3;
+const sentences = 4;
+
+const { output } = buildGenerator(words);
+const initial = output(paragraphs, sentences);
+---
+
+<Layout title="Philly Sentence Generator">
+
+  <textarea id="output" readonly>{initial.join('\n\n')}</textarea>
+
+  <script id="words-data" type="application/json" set:html={JSON.stringify(words)}></script>
+
+  <script>
+    import '../scripts/main.js';
+  </script>
+</Layout>
+
+<style lang="scss">
+
+  textarea {
+    resize: vertical;
+    display: inline-block;
+    min-height: 360px;
+    min-width: 300px;
+    width: 800px;
+    border: 1px dashed #010101;
+    padding: 1rem;
+    text-align: left;
+    background: #ffffff;
+    color: #010101;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+  }
+</style>

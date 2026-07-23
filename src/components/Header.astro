@@ -1,0 +1,25 @@
+---
+import Options from '../components/Options.astro';
+
+const { defaultParagraphs = 3, defaultSentences = 4 } = Astro.props;
+---
+
+<header>
+	<h1>Philly Ipsum Text Jawnerator</h1>
+  <Options
+    defaultParagraphs={defaultParagraphs}
+    defaultSentences={defaultSentences}
+  />
+</header>
+
+<style lang="scss">
+	header {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		h1 {
+			margin: 0 auto 1rem;
+		}
+	}
+</style>

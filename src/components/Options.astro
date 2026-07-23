@@ -1,0 +1,125 @@
+---
+const { defaultParagraphs = 3, defaultSentences = 4 } = Astro.props;
+const range = Array.from({ length: 10 }, (_, i) => i + 1);
+const tags = ['<p>', '<span>', '<li>', '<td>', '<code>'];
+---
+
+<section class="options">
+  <div class="selects">
+    <label>
+      Paragraphs:
+      <select id="paragraph-count">
+        {range.map(n => <option value={n} selected={n === defaultParagraphs}>{n}</option>)}
+      </select>
+    </label>
+
+    <label>
+      Sentences:
+      <select id="sentence-count">
+        {range.map(n => <option value={n} selected={n === defaultSentences}>{n}</option>)}
+      </select>
+    </label>
+
+    <label>
+      Include HTML?
+      <select id="include-html">
+        <option value="no" selected>Nah.</option>
+        <option value="yes">Yea!</option>
+      </select>
+    </label>
+
+    <label>
+      Tags:
+      <select id="html-tag">
+        {tags.map(t => <option value={t.replace(/[<>]/g, '')}>{t}</option>)}
+      </select>
+    </label>
+  </div>
+
+  <div class="buttons">
+    <button id="regenerate" type="button">Do it different.</button>
+    <button id="copy" type="button">Grab that jawn!</button>
+    <span id="copy-hint" aria-live="polite"></span>
+  </div>
+</section>
+
+<style lang="scss">
+	.options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .selects {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+
+      label {
+        font-size: 1.25rem;
+        font-weight: bold;
+        
+        select {
+          font-size: 1.25rem;
+          margin-left: 0.5rem;
+          color: #010101;
+          background: #ffffff;
+        }
+      }
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      position: relative;
+      gap: 1rem;
+      margin: 2rem auto 0;
+
+      #copy-hint {
+        display: block;
+        opacity: 0;
+        line-height: 0;
+        transform: translateY(0);
+        pointer-events: none;
+        position: absolute;
+        bottom: -100%;
+      }
+
+      #copy-hint.hint-show {
+        animation: floatUp 1s ease-out forwards;
+      }
+
+      @keyframes floatUp {
+        0%   { opacity: 0; transform: translateY(0); }
+        20%  { opacity: 1; transform: translateY(-4px); }
+        70%  { opacity: 1; transform: translateY(-20px); }
+        100% { opacity: 0; transform: translateY(-26px); }
+      }
+
+      button {
+        box-shadow: inset 0px 1px 0px 0px #54a3f7;
+        background: linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
+        background-color: #007dc1;
+        border: 1px solid #124d77;
+        display: inline-block;
+        cursor: pointer;
+        color: #ffffff;
+        font-family: Arial, sans-serif;
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 12px 24px;
+        text-decoration: none;
+        text-shadow: 0px 1px 0px #154682;
+        transition: all 250ms ease;
+
+        &:hover,
+        &:focus {
+          background: linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+          background-color: #0061a7;
+        }
+      }
+    }
+  }
+</style>

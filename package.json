@@ -1,0 +1,22 @@
+{
+  "name": "philly-ipsum",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "serve": "astro dev",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.1.3",
+    "astro-icon": "^1.1.5",
+    "astro-seo": "^1.1.0",
+    "sass": "^1.101.3"
+  }
+}
