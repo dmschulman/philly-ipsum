@@ -6,26 +6,26 @@ const emoji = emojis[Math.floor(Math.random() * emojis.length)];
 ---
 
 <footer>
-	<p>Coded in Philadelphia <span class="emoji" aria-hidden="true">{emoji}</span> by <a href="https://dmschulman.com" target="_blank" rel="noopener,noreferrer">David M. Schulman</a></p>
-	<p>Images courtesy of <a href="https://www.pexels.com/photo/light-city-road-traffic-8921657/" target="_blank" rel="noopener,noreferrer">Pexels</a></p>
+	<p>Coded in Philadelphia <span class="emoji" aria-hidden="true">{emoji}</span> by <a href="https://dmschulman.com" target="_blank" rel="noopener noreferrer">David M. Schulman</a></p>
+	<p>Images courtesy of <a href="https://www.pexels.com/photo/light-city-road-traffic-8921657/" target="_blank" rel="noopener noreferrer">Pexels</a></p>
 	<ul class="social">
 		<li>
-			<a class="github" href="https://github.com/dmschulman" title="David M. Schulman on Github" target="_blank" rel="noopener,noreferrer">
+			<a class="github" href="https://github.com/dmschulman" title="David M. Schulman on Github" target="_blank" rel="noopener noreferrer">
 				<Icon name="fa-github" />
 			</a>
 		</li>
 		<li>
-			<a class="linkedin" href="https://www.linkedin.com/in/dmschulman/" title="David M. Schulman on LinkedIn" target="_blank" rel="noopener,noreferrer">
+			<a class="linkedin" href="https://www.linkedin.com/in/dmschulman/" title="David M. Schulman on LinkedIn" target="_blank" rel="noopener noreferrer">
 				<Icon name="fa-linkedin" />
 			</a>
 		</li>
 		<li>
-			<a class="bluesky" href="https://bsky.app/profile/schul.dev" title="David M. Schulman on Bluesky" target="_blank" rel="noopener,noreferrer">
+			<a class="bluesky" href="https://bsky.app/profile/schul.dev" title="David M. Schulman on Bluesky" target="_blank" rel="noopener noreferrer">
 				<Icon name="fa-bluesky" />
 			</a>
 		</li>
 		<li>
-			<a class="instagram" href="https://www.instagram.com/dmschulman/" title="David M. Schulman on Instagram" target="_blank" rel="noopener,noreferrer">
+			<a class="instagram" href="https://www.instagram.com/dmschulman/" title="David M. Schulman on Instagram" target="_blank" rel="noopener noreferrer">
 				<Icon name="fa-instagram" />
 			</a>
 		</li>
@@ -42,9 +42,15 @@ const emoji = emojis[Math.floor(Math.random() * emojis.length)];
 
 		p {
 			margin: 0 auto 0.5rem;
+			text-shadow: 1px 3px 1px #010101;
 
 			a {
 				color: #ffffff;
+
+				&:hover,
+				&:focus {
+					color: #bbb;
+				}
 			}
 		}
 		
@@ -60,13 +66,13 @@ const emoji = emojis[Math.floor(Math.random() * emojis.length)];
 				li {
 					a {
 						color: #ffffff;
-						transition: all 250ms ease;
-
+						display: block;
+						
 						&.github {
 							&:hover,
 							&:focus {
 								svg {
-									filter: brightness(0) saturate(100%) invert(63%) sepia(3%) saturate(382%) hue-rotate(87deg) brightness(93%) contrast(87%);
+									filter: brightness(0) saturate(100%) invert(63%) sepia(3%) saturate(382%) hue-rotate(87deg) brightness(93%) contrast(87%) drop-shadow(-1px -1px 0px #010101) drop-shadow(1px -1px 0px #010101) drop-shadow(1px 1px 0px #010101) drop-shadow(-1px 1px 0px #010101);
 								}
 							}
 						}
@@ -75,7 +81,7 @@ const emoji = emojis[Math.floor(Math.random() * emojis.length)];
 							&:hover,
 							&:focus {
 								svg {
-									filter: brightness(0) saturate(100%) invert(26%) sepia(62%) saturate(6265%) hue-rotate(186deg) brightness(96%) contrast(101%);
+									filter: brightness(0) saturate(100%) invert(26%) sepia(62%) saturate(6265%) hue-rotate(186deg) brightness(96%) contrast(101%) drop-shadow(-1px -1px 0px #010101) drop-shadow(1px -1px 0px #010101) drop-shadow(1px 1px 0px #010101) drop-shadow(-1px 1px 0px #010101);
 								}
 							}
 						}
@@ -84,7 +90,7 @@ const emoji = emojis[Math.floor(Math.random() * emojis.length)];
 							&:hover,
 							&:focus {
 								svg {
-									filter: brightness(0) saturate(100%) invert(58%) sepia(58%) saturate(5815%) hue-rotate(176deg) brightness(103%) contrast(112%);
+									filter: brightness(0) saturate(100%) invert(58%) sepia(58%) saturate(5815%) hue-rotate(176deg) brightness(103%) contrast(112%) drop-shadow(-1px -1px 0px #010101) drop-shadow(1px -1px 0px #010101) drop-shadow(1px 1px 0px #010101) drop-shadow(-1px 1px 0px #010101);
 								}
 							}
 						}
@@ -93,7 +99,7 @@ const emoji = emojis[Math.floor(Math.random() * emojis.length)];
 							&:hover,
 							&:focus {
 								svg {
-									filter: brightness(0) saturate(100%) invert(47%) sepia(13%) saturate(2796%) hue-rotate(278deg) brightness(88%) contrast(75%);
+									filter: brightness(0) saturate(100%) invert(47%) sepia(13%) saturate(2796%) hue-rotate(278deg) brightness(88%) contrast(75%) drop-shadow(-1px -1px 0px #010101) drop-shadow(1px -1px 0px #010101) drop-shadow(1px 1px 0px #010101) drop-shadow(-1px 1px 0px #010101);
 								}
 							}
 						}
@@ -101,10 +107,13 @@ const emoji = emojis[Math.floor(Math.random() * emojis.length)];
 						svg {
 							width: 32px;
 							height: 32px;
+							filter: 
+								drop-shadow(-1px -1px 0px #010101) drop-shadow(1px -1px 0px #010101) drop-shadow(1px 1px 0px #010101) drop-shadow(-1px 1px 0px #010101);
+							}
 						}
 					}
 				}
 			}
 		}
-	}
+	
 </style>

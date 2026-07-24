@@ -11,9 +11,10 @@ const { output } = buildGenerator(words);
 const initial = output(paragraphs, sentences);
 ---
 
-<Layout title="Philly Sentence Generator">
+<Layout>
 
-  <textarea id="output" readonly>{initial.join('\n\n')}</textarea>
+  <label for="output" class="visually-hidden"></label>
+  <textarea id="output" aria-label="Generated text" readonly>{initial.join('\n\n')}</textarea>
 
   <script id="words-data" type="application/json" set:html={JSON.stringify(words)}></script>
 
@@ -25,16 +26,30 @@ const initial = output(paragraphs, sentences);
 <style lang="scss" is:global>
   @use '../styles/breakpoints.scss' as *;
 
+  label {
+    &.visually-hidden {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+  }
+
   textarea {
     resize: none;
     display: block;
     min-height: 360px;
     min-width: calc(320px - 2rem);
     width: 90vw;
-    border: 1px dashed #010101;
+    border: 1px solid #010101;
+    box-shadow: 10px 10px 20px 2px #333;
     padding: 1rem;
     text-align: left;
     background: #ffffff;
+    opacity: .9;
     color: #010101;
     margin: 0 auto;
     font-family: Arial, Helvetica, sans-serif;

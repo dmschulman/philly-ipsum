@@ -7,7 +7,7 @@ export default defineConfig({
   site: 'https://www.phillyipsum.com',
   base: '/',
   cacheDir: './node_modules/.astro',
-  trailingSlash: "never",
+  trailingSlash: "always",
   build: {
     inlineStylesheets: `never`,
   },
@@ -24,7 +24,9 @@ export default defineConfig({
     }
   },
   integrations: [
-    sitemap(),
+    sitemap({
+      lastmod: new Date()
+    }),
     icon({
       iconDir: "src/assets/icons",
       svgoOptions: {

@@ -39,7 +39,7 @@ const tags = ['<p>', '<span>', '<li>', '<td>', '<code>'];
   <div class="buttons">
     <button id="regenerate" type="button">Do it different.</button>
     <button id="copy" type="button">Grab that jawn!</button>
-    <span id="copy-hint" aria-live="polite"></span>
+    <span id="copy-hint" aria-live="polite" role="status"></span>
   </div>
 </section>
 
@@ -68,6 +68,7 @@ const tags = ['<p>', '<span>', '<li>', '<td>', '<code>'];
         font-size: 1.15rem;
         font-weight: bold;
         text-align: center;
+        text-shadow: 1px 3px 1px #010101;
 
         @include bp(tablet) {
           font-size: 1.25rem;
@@ -85,6 +86,11 @@ const tags = ['<p>', '<span>', '<li>', '<td>', '<code>'];
             margin-left: 0.5rem;
             display: inline-block;
           }
+
+          &:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+          }
         }
       }
     }
@@ -96,6 +102,7 @@ const tags = ['<p>', '<span>', '<li>', '<td>', '<code>'];
       position: relative;
       gap: 1rem;
       margin: 2rem auto 0;
+      
 
       #copy-hint {
         display: block;
@@ -133,6 +140,7 @@ const tags = ['<p>', '<span>', '<li>', '<td>', '<code>'];
         text-decoration: none;
         text-shadow: 0px 1px 0px #154682;
         transition: all 250ms ease;
+        box-shadow: 6px 6px 10px 2px #010101;
 
         &:hover,
         &:focus {

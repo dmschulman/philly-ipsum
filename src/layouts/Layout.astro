@@ -3,6 +3,9 @@ import Head from '../components/Head.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
+import background from '../assets/images/philadelphia-city-hall-sm.webp';
+import backgroundDesktop from '../assets/images/philadelphia-city-hall.webp';
+
 interface Props {
   title?: string;
   description?: string;
@@ -13,7 +16,13 @@ const { title, description, image } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html
+  lang="en"
+  style={`
+    --background: url(${background.src});
+    --backgroundDesktop: url(${backgroundDesktop.src});
+  `}
+>
   <Head title={title} description={description} image={image} />
   <body>
     <Header />
@@ -31,17 +40,16 @@ const { title, description, image } = Astro.props;
     font-size: 16px;
     color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
-    background-image: url(../assets/images/philadelphia-city-hall-sm.jpg);
+    background-image: var(--background);
     background-color: #666666;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
-    
 
     @include bp(tablet) {
       font-size: 18px;
-      background-image: url(../assets/images/philadelphia-city-hall.jpg);
+      background-image: var(--backgroundDesktop);
     }
       
     body {

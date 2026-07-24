@@ -19,11 +19,20 @@ const display = () => {
   if (includeHtml) {
     outputEl.value = currentParagraphs
     .map(text => `<${tag}>${text}</${tag}>`)
-    .join('\n');
+    .join('\n\n');
   } else {
     outputEl.value = currentParagraphs.join('\n\n');
   }
 };
+
+const syncTagDisabled = () => {
+  const disabled = includeHtmlSelect.value !== 'yes';
+  tagSelect.disabled = disabled;
+};
+
+syncTagDisabled();
+
+includeHtmlSelect.addEventListener('change', syncTagDisabled);
 
 const regenerate = () => {
   const pCount = Number(paragraphSelect.value);
