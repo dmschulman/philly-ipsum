@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+	title="404 - Page not found | Philly Ipsum"
+	description="You fooled around and now you found out. Page doesn't exist, ya crumb."
+	noindex={true}
+  nofollow={true}
+>
+	<p>You fooled around and now you found out.</p>
+	<p>Page doesn't exist, ya crumb.</p>
+	<p>You're probably looking for the <a href="/">homepage</a>.</p>
+</Layout>
+
+<style lang="scss">
+  @use '../styles/breakpoints.scss' as *;
+
+	p {
+		text-align: center;
+		margin: 0 auto 1rem;
+
+		a {
+			color: #ffffff;
+			font-weight: bold;
+		}
+	}
+
+</style>

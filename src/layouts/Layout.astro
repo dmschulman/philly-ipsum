@@ -1,6 +1,6 @@
 ---
 import Head from '../components/Head.astro';
-import Header from '../components/Header.astro';
+import Options from '../components/Options.astro';
 import Footer from '../components/Footer.astro';
 
 import background from '../assets/images/philadelphia-city-hall-sm.webp';
@@ -10,9 +10,23 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  noindex?: boolean;
+  nofollow?: boolean;
+  defaultParagraphs: number;
+  defaultSentences: number;
 }
 
-const { title, description, image } = Astro.props;
+const isIndex = Astro.url.pathname === '/';
+
+const {
+  title,
+  description,
+  image,
+  noindex = false,
+  nofollow = false,
+  defaultParagraphs = 3,
+  defaultSentences = 4
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -23,9 +37,18 @@ const { title, description, image } = Astro.props;
     --backgroundDesktop: url(${backgroundDesktop.src});
   `}
 >
-  <Head title={title} description={description} image={image} />
+  <Head title={title} description={description} image={image} noindex={noindex} nofollow={nofollow} />
   <body>
-    <Header />
+    <header>
+      <h1>Philly Ipsum.com</h1>
+	    <p class="intro">🎵 Move closer to your world 🎵</p>
+      {isIndex && (
+        <Options
+          defaultParagraphs={defaultParagraphs}
+          defaultSentences={defaultSentences}
+        />
+      )}
+    </header>
     <main>
       <slot />
     </main>
@@ -58,29 +81,45 @@ const { title, description, image } = Astro.props;
       margin: 0;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       align-items: center;
       flex-wrap: nowrap;
-      min-height: 100vh;
+      height: 100vh;
 
       header {
-        margin: 2rem 2% 3rem;
+        margin: 1rem 2% 4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
 
         @include bp(tablet) {
-          margin: 2rem 5% 3rem;
+          margin: 1rem 5% 5rem;
         }
 
+        h1 {
+          margin: 0 auto 0.5rem;
+          text-shadow: 1px 3px 1px #010101;
+        }
+
+        p.intro {
+          text-align: center;
+          margin: 0 auto 1rem;
+          text-shadow: 1px 3px 1px #010101;
+        }
       }
 
       main {
         display: flex;
+        flex: 1;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin: 2rem 2%;
+        justify-content: stretch;
+        align-items: stretch;
+        width: calc(100% - 2rem);
+        margin: 0 2%;
+        min-height: 0;
 
         @include bp(tablet) {
-          margin: 2rem 5%;
+          margin: 0 5%;
+          width: calc(100% - 10%);
         }
       }
 
@@ -88,7 +127,7 @@ const { title, description, image } = Astro.props;
         margin: 2rem 2% 1rem;
 
         @include bp(tablet) {
-          margin: 2rem 5% 1rem;
+          margin: 5rem 5% 1rem;
         }
       }
     }

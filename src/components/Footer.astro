@@ -36,20 +36,21 @@ const emoji = emojis[Math.floor(Math.random() * emojis.length)];
 	footer {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		justify-content: flex-end;
 		align-items: center;
 		font-weight: bold;
 
 		p {
 			margin: 0 auto 0.5rem;
 			text-shadow: 1px 3px 1px #010101;
+			text-align: center;
 
 			a {
 				color: #ffffff;
 
 				&:hover,
 				&:focus {
-					color: #bbb;
+					color: #bbbbbb;
 				}
 			}
 		}

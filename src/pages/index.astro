@@ -11,8 +11,10 @@ const { output } = buildGenerator(words);
 const initial = output(paragraphs, sentences);
 ---
 
-<Layout>
-
+<Layout
+  title="Philly Ipsum.com - Yeet that jawn"
+	description="The lorem ipsum generator of brotherly love and sisterly affection. Create Philly-centric placeholder text for your next big design project or website."
+>
   <label for="output" class="visually-hidden"></label>
   <textarea id="output" aria-label="Generated text" readonly>{initial.join('\n\n')}</textarea>
 
@@ -39,13 +41,15 @@ const initial = output(paragraphs, sentences);
   }
 
   textarea {
+    box-sizing: border-box;
+    flex: 1;
     resize: none;
-    display: block;
-    min-height: 360px;
-    min-width: calc(320px - 2rem);
-    width: 90vw;
+    width: 100%;
+    min-width: 320px;
+    min-height: 130px;
+    max-width: 1200px;
     border: 1px solid #010101;
-    margin: 0;
+    margin: 0 auto;
     box-shadow: 10px 10px 20px 2px #333;
     padding: 1rem;
     text-align: left;
@@ -56,10 +60,7 @@ const initial = output(paragraphs, sentences);
     font-size: 1rem;
 
     @include bp(tablet) {
-      width: calc(70vw - 10%);
       min-width: 700px;
-      min-height: 500px;
-      resize: vertical;
     }
   }
 </style>

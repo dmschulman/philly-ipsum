@@ -7,12 +7,16 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+	noindex: boolean;
+	nofollow: boolean;
 }
 
 const {
 	title = 'Philly Ipsum.com - Yeet that jawn',
 	description = 'The lorem ipsum generator of brotherly love and sisterly affection. Create Philly-centric placeholder text for your next big design project or website.',
   image = '/og-image.jpg',
+	noindex = false,
+	nofollow = false
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
@@ -52,6 +56,8 @@ const structuredData = {
 		title={title}
 		description={description}
 		canonical={canonicalURL}
+		noindex={noindex}
+    nofollow={nofollow}
 		openGraph={{
 			basic: {
 				title,
@@ -61,7 +67,7 @@ const structuredData = {
 			},
 			optional: {
 				siteName: 'Philly Ipsum.com - Yeet that jawn',
-				description,
+				description: 'The lorem ipsum generator of brotherly love and sisterly affection. Create Philly-centric placeholder text for your next big design project or website.',
 				locale: 'en_US',
 			},
 			image: {
