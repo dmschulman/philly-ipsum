@@ -55,7 +55,7 @@ const tags = ['<p>', '<span>', '<li>', '<td>', '<code>'];
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
-      gap: 2rem 1rem;
+      gap: 1rem;
 
       @include bp(tablet) {
         display: flex;
@@ -79,13 +79,9 @@ const tags = ['<p>', '<span>', '<li>', '<td>', '<code>'];
           margin: 0.5rem auto 0;
           color: #010101;
           background: #ffffff;
-          display: block;
+          margin-left: 0.5rem;
+          display: inline-block;
           text-align: center;
-
-          @include bp(tablet) {
-            margin-left: 0.5rem;
-            display: inline-block;
-          }
 
           &:disabled {
             opacity: 0.4;
